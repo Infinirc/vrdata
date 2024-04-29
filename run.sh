@@ -19,4 +19,4 @@ port = $PORT\n\
 " > ~/.streamlit/config.toml
 
 # 启动 Streamlit 应用
-streamlit run your_streamlit_app.py
+streamlit run app.py
