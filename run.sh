@@ -1,22 +1,27 @@
 #!/bin/bash
 
 # 安装必要的包
+echo "Installing Streamlit..."
 pip install streamlit
 
-# 设置 Streamlit 的配置
+# 创建配置目录
+echo "Setting up Streamlit config..."
 mkdir -p ~/.streamlit
 
-echo "\
-[general]\n\
-email = \"your-email@example.com\"\n\
-" > ~/.streamlit/credentials.toml
+# 写入凭证
+cat > ~/.streamlit/credentials.toml <<EOL
+[general]
+email = "your-email@example.com"
+EOL
 
-echo "\
-[server]\n\
-headless = true\n\
-enableCORS=false\n\
-port = $PORT\n\
-" > ~/.streamlit/config.toml
+# 写入服务器设置
+cat > ~/.streamlit/config.toml <<EOL
+[server]
+headless = true
+enableCORS = false
+port = \$PORT
+EOL
 
+echo "Starting Streamlit..."
 # 启动 Streamlit 应用
 streamlit run app.py
